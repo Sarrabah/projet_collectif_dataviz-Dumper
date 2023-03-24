@@ -11,12 +11,20 @@
         <h1>Dump Me</h1>
     </header>
     <label>Donner la date du rendez vous:</label>
-    <input type="date" placeholder="Entrez une valeur ici" id="in">
-    <button type="button" onclick="getValue();">Récupérer la valeur</button>
+    <input type="text" placeholder="Entrez une valeur ici" id="in">
+    <button type="button" onclick="getValue(); meteo()">Récupérer la valeur</button>
     <p><strong>Note:</strong> Donner une date qui ne dépasse pas les 3jours d'aujourd'hui</p>
     </main>
     <div id="joke">
     </div>
+    <div id="tmin"></div>
+    <div id="tmax"></div>
+
+    <section class="fiches"></section>
+    
+    
+    
+
     <script src="essai.js"> </script>
   </body>
 </html>
