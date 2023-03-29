@@ -3,7 +3,10 @@ function getValue() {
     var input = document.getElementById("in").value;
     return input;
 }
-
+function playMusic(){
+    let audio = new Audio("music.mp3")
+    audio.play()
+}
 async function getJoke() {
    
     let reponse =await fetch('https://geek-jokes.sameerkumar.website/api?format=json');
@@ -16,12 +19,14 @@ async function getJoke() {
 
 async function meteo () {
     let reponse =await fetch('https://prevision-meteo.ch/services/json/paris');
-    let alternance = await reponse.json();
-    console.log(alternance);
-    if ((getValue() != 0) && (alternance.fcst_day_0.date ==  getValue() ) && (alternance.fcst_day_0.condition == 'Eclaircies')){    
+    let meteo = await reponse.json();
+    console.log(meteo);
+    if ((getValue() != 0) && (meteo.fcst_day_0.date ==  getValue() ) && (meteo.fcst_day_0.condition == 'Eclaircies')){    
         getJoke();
-        document.getElementById("tmin").innerHTML ="la température minimum= "+ alternance.fcst_day_0.tmin;
-        document.getElementById("tmax").innerHTML ="la température maximum= "+ alternance.fcst_day_0.tmax;
+        document.getElementById("meteo").innerHTML =
+      " Mauvais temps ? C'est le moment idéal pour une balade. Il fait " +
+      Math.floor(meteo.fcst_day_0.tmin + meteo.fcst_day_0.tmax) / 2 +
+      "°C en moyenne";
         const pieceElement = document.createElement("div");
         pieceElement.id="sun"
         const image1Element= document.createElement("div");
@@ -37,10 +42,12 @@ async function meteo () {
         image1Element.appendChild(image2Element);
         image2Element.appendChild(image3Element);
     }
-   else if ((getValue() != 0) && (alternance.fcst_day_1.date ==  getValue() ) && (alternance.fcst_day_1.condition == 'Eclaircies')){
+   else if ((getValue() != 0) && (meteo.fcst_day_1.date ==  getValue() ) && (meteo.fcst_day_1.condition == 'Eclaircies')){
         getJoke();
-        document.getElementById("tmin").innerHTML ="la température minimum= "+ alternance.fcst_day_1.tmin;
-        document.getElementById("tmax").innerHTML ="la température maximum= "+ alternance.fcst_day_1.tmax;
+        document.getElementById("meteo").innerHTML =
+        " Mauvais temps ? C'est le moment idéal pour une balade. Il fait " +
+        Math.floor(meteo.fcst_day_1.tmin + meteo.fcst_day_1.tmax) / 2 +
+        "°C en moyenne";
         const pieceElement = document.createElement("div"); 
         pieceElement.id="sun"
         const image1Element= document.createElement("div");
@@ -56,10 +63,12 @@ async function meteo () {
         image2Element.appendChild(image3Element);
     }
     
-    else if ((getValue() != 0) && (alternance.fcst_day_2.date ==  getValue() ) && (alternance.fcst_day_2.condition == 'Eclaircies')){
+    else if ((getValue() != 0) && (meteo.fcst_day_2.date ==  getValue() ) && (meteo.fcst_day_2.condition == 'Pluie faible')){
         getJoke();
-        document.getElementById("tmin").innerHTML ="la température minimum= "+ alternance.fcst_day_2.tmin;
-        document.getElementById("tmax").innerHTML ="la température maximum= "+ alternance.fcst_day_2.tmax;
+        document.getElementById("meteo").innerHTML =
+        " Mauvais temps ? C'est le moment idéal pour une balade. Il fait " +
+        Math.floor(meteo.fcst_day_2.tmin + meteo.fcst_day_2.tmax) / 2 +
+        "°C en moyenne";
         const pieceElement = document.createElement("div"); 
         pieceElement.id="sun"
         const image1Element= document.createElement("div");
@@ -74,10 +83,12 @@ async function meteo () {
         image1Element.appendChild(image2Element);
         image2Element.appendChild(image3Element);
     }
-    else if ((getValue() != 0) && (alternance.fcst_day_3.date ==  getValue() ) && (alternance.fcst_day_3.condition == 'Pluie faible')){
+    else if ((getValue() != 0) && (meteo.fcst_day_3.date ==  getValue() ) && (meteo.fcst_day_3.condition == 'Pluie faible')){
         getJoke();
-        document.getElementById("tmin").innerHTML ="la température minimum= "+ alternance.fcst_day_3.tmin;
-        document.getElementById("tmax").innerHTML ="la température maximum= "+ alternance.fcst_day_3.tmax;
+        document.getElementById("meteo").innerHTML =
+        " Mauvais temps ? C'est le moment idéal pour une balade. Il fait " +
+        Math.floor(meteo.fcst_day_3.tmin + meteo.fcst_day_3.tmax) / 2 +
+        "°C en moyenne";
         const pieceElement = document.createElement("div");
         pieceElement.id="rain"
         const image1Element= document.createElement("div");
@@ -93,10 +104,12 @@ async function meteo () {
         image1Element.appendChild(image3Element);
     }
 
-    else if ((getValue() != 0) && (alternance.fcst_day_4.date ==  getValue() ) && (alternance.fcst_day_4.condition == 'Eclaircies')){
+    else if ((getValue() != 0) && (meteo.fcst_day_4.date ==  getValue() ) && (meteo.fcst_day_4.condition == 'Eclaircies')){
         getJoke();
-        document.getElementById("tmin").innerHTML ="la température minimum= "+ alternance.fcst_day_4.tmin;
-        document.getElementById("tmax").innerHTML ="la température maximum= "+ alternance.fcst_day_4.tmax;
+        document.getElementById("meteo").innerHTML =
+        " Mauvais temps ? C'est le moment idéal pour une balade. Il fait " +
+        Math.floor(meteo.fcst_day_4.tmin + meteo.fcst_day_4.tmax) / 2 +
+        "°C en moyenne";        
         const pieceElement = document.createElement("div"); 
         pieceElement.id="sun"
         const image1Element= document.createElement("div");
@@ -119,7 +132,7 @@ async function meteo () {
 meteo();
 
 async function restaurant() {
-    let response2= await fetch('https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google_maps&q=restaurant&ll=%4048.886471%2C2.341053%2C14z&google_domain=google.com&hl=en&start=100&api_key=88a8063e43592ffc75fb359dedaa8889041421cca56906add4f2940d9e5d2b98')
+    let response2= await fetch('https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google_maps&q=restaurant&ll=%4048.886471%2C2.341053%2C14z&google_domain=google.com&hl=en&start=100&api_key=94dc42afe427788d76393b2f99aee80cc8efac5943493384c70f63f382860a6d')
    let event = await response2.json() 
    let localresults=event.local_results
    
@@ -150,7 +163,7 @@ async function restaurant() {
 }
 
 async function bar() {
-    let response3= await fetch('https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google_maps&q=pmu&ll=%4048.8534%2C2.3488%2C14z&google_domain=google.com&hl=fr&type=search&start=20&api_key=88a8063e43592ffc75fb359dedaa8889041421cca56906add4f2940d9e5d2b98')
+    let response3= await fetch('https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google_maps&q=pmu&ll=%4048.8534%2C2.3488%2C14z&google_domain=google.com&hl=fr&type=search&start=20&api_key=94dc42afe427788d76393b2f99aee80cc8efac5943493384c70f63f382860a6d')
     let event2 = await response3.json() 
     let localresult=event2.local_results
     let badbarReviews =[]
@@ -166,8 +179,8 @@ async function bar() {
     nomBar.innerText= "Le nom du meilleur bar: " + resultat2.title;
     const rateBar = document.createElement("p");
     rateBar.innerText= "Rating : "+ resultat2.rating;
-    const etoileBar = document.createElement("img");
-    etoileBar.src= "imagee.png";
+        const etoileBar = document.createElement("img");
+        etoileBar.src= "imagee.png";
     const adresseBar = document.createElement("p");
     adresseBar.innerText= "Adresse: " + resultat2.address;
     const sectionfiches= document.querySelector(".bar");
@@ -179,14 +192,20 @@ async function bar() {
 }
  
 async function freeEvent() {
-        let getEvent= await fetch('https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google_events&q=free+events&location=Paris%2C+Paris%2C+Ile-de-France%2C+France&api_key=88a8063e43592ffc75fb359dedaa8889041421cca56906add4f2940d9e5d2b98')
+        let getEvent= await fetch('https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google_events&q=free+events&location=Paris%2C+Paris%2C+Ile-de-France%2C+France&api_key=94dc42afe427788d76393b2f99aee80cc8efac5943493384c70f63f382860a6d')
         let eventAnswer = await getEvent.json() 
         let eventArray =[]
         let testDate=getValue();
         let date =testDate.split('.')
-        let jour=date[0]
+        let jour=0;
+        if (date[0][0] == 0){
+            jour=date[0].substring(1);
+        }
+        else{
+            jour=date[0];
+        }
         let mois=date[1]
-        let annee=date[2]
+        //let annee=date[2]
         if (mois==03) { mois= "Mar"}
         if (mois==04) {mois ="Apr"}
         let ourDate =`${mois} ${jour}`
@@ -218,7 +237,20 @@ async function freeEvent() {
     }
 //freeEvent();
 
-
+// cloud 
+/*const pieceElement = document.createElement("div");
+        pieceElement.id="cloud"
+        const image1Element= document.createElement("div");
+        image1Element.id    = 'icon cloudy';
+        const image2Element= document.createElement("div");
+        image2Element.id    = 'cloud';
+        const image3Element= document.createElement("div");
+        image3Element.id    = 'cloud';
+        const sectionfiches= document.querySelector(".fiches");
+        sectionfiches.appendChild(pieceElement);
+        pieceElement.appendChild(image1Element);
+        image1Element.appendChild(image2Element);
+        image1Element.appendChild(image3Element);*/
 
 
 

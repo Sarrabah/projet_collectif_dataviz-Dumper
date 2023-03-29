@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Dump Me</title>
-    <link rel="stylesheet" href="essai.css">
-  </head>
-  <body>
-    <main>
-    <header>
-        <img id ="titre" src ="dumper icon.png">
-    </header>
-    <label>Donner la date du rendez vous:</label>
-    <input type="text" placeholder="Entrez une valeur ici" id="in">
-    <button type="button" onclick="getValue(); meteo(); restaurant(); bar(); freeEvent()">Récupérer la valeur</button>
-    <p><strong>Note:</strong> Donner une date qui ne dépasse pas les 5 jours d'aujourd'hui (sous la forme de jj.mm.aaaa)</p>
-    </main>
-    <div class="boxes">
-      <div id="joke"></div>
-      <div id="tmin"></div>
-      <div id="tmax"></div>
-    </div>
-    <section class="fiches"></section>
-    
-    <div class ="boxes"> 
-    <section class="restaurant"></section>
-    <section class="bar"></section>
-    </div>
 
-    <section class="event"></section>
-    
+<head>
+  <meta charset="utf-8">
+  <title>Dump Me</title>
+  <link rel="stylesheet" href="essai.css">
+</head>
 
-    <script src="essai.js"> </script>
-  </body>
+<body>
+
+  <header>
+    <img src="dumperIcon2.png" style="text-align:center" alt="logo">
+  </header>
+  <main>
+    <label> A quelle date souhaitez-vous laisser la magie opérer ?</label> <br><br>
+    <input type="text" placeholder="DD.MM.YYYY" id="in">
+    <button class="button-34"type="button" onclick="getValue(); meteo(); getJoke();playMusic(); restaurant(); bar(); freeEvent()">Larguez
+      ici</button><br><br>
+    Vous avez 5 jours et on sait que c'est déjà trop...</p>
+  </main>
+
+  <div class="boxes">
+
+    <div id="joke"></div>
+    <div id="meteo"></div>
+    <div class="fiches"></div>
+    <div class="restaurant"></div>
+    <div class="bar"></div>
+    <div class="event"></div>
+  </div>
+
+  <script src="essai.js"> </script>
+
+</body>
+
 </html>
-
-
